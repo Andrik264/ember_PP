@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action, computed } from '@ember/object';
 
-
 export default class PaginationComponent extends Component {
   @computed('args.pagination.{page,pages}')
   get numbersForPagination() {
@@ -48,6 +47,7 @@ export default class PaginationComponent extends Component {
   }
 
   get pageId() {
+    console.log('button trigger', this.args.pagination);
     return this.args.pagination.page;
   }
 

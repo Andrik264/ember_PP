@@ -1,9 +1,15 @@
-<ul>
-  {{#each @users as |user|}}
-    <li>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @users as |user|}}
       <User @user={{user}} />
-    </li>
-  {{/each}}
-</ul>
-
+    {{/each}}  
+  </tbody>
+</table>
 
