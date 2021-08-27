@@ -1,0 +1,10 @@
+{{page-title "Users"}}
+  <div>
+    List of Users
+    <div>
+      <UsersList @users={{this.model.data}} />
+    </div>
+
+    <Pagination @changePage={{fn this.changePage}} @pagination={{this.pagination}} />
+  </div>
+{{outlet}}

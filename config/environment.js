@@ -21,6 +21,8 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    ACCESS_TOKEN:
+      'cff6223e3e434a9a20f6986e987c62c8efb721ec46b233c3e69920d13ecf4b2c',
   };
 
   if (environment === 'development') {
@@ -29,6 +31,8 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.API_DOMAIN_NAME = 'https://gorest.co.in/public/v1';
+    ENV.ACCESS_TOKEN = process.env.ACCESS_TOKEN; // access token from .env
   }
 
   if (environment === 'test') {

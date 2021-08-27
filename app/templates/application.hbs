@@ -1,7 +1,21 @@
-{{page-title "WebPageByEmber"}}
+{{page-title "Ember PP"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<h1>
+  Application template
+</h1>
+
+<div>
+    <button type="button">
+      <LinkTo @route="users">
+        Users
+      </LinkTo>
+    </button>
+
+   <button type="button">
+      <LinkTo @route="posts">
+        Posts
+      </LinkTo>
+   </button>
+</div>
 
 {{outlet}}
