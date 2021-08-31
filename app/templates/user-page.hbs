@@ -1,0 +1,40 @@
+{{page-title "UserPage"}}
+<div class="user">
+  <div>
+    <div class="user__img-block">
+      <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1466496305/cs40hu9ibibhazx2nmv9.jpg" alt="logo">
+    </div>
+
+    <UserDetails @user={{this.user}} />
+  </div>
+
+
+
+  <div class="switcher">
+    <button
+      type="button"
+      class="btn {{if (eq this.selectedTab 'posts') 'btn-success'}}"
+      {{on "click" (fn this.selectTab 'posts')}}
+    >
+      Posts
+    </button>
+
+    <button
+      type="button"
+      class="btn {{if (eq this.selectedTab 'todos') 'btn-success'}}"
+      {{on "click" (fn this.selectTab 'todos')}}
+    >
+      Todos
+    </button>
+  </div>
+
+  {{outlet}}
+
+  <div class="user__additional-info">
+    {{#if (eq this.selectedTab 'posts')}}
+      <UserPosts @username={{this.user.name}} @posts={{this.posts}} />
+    {{else}}
+      <div>Todos list</div>
+    {{/if}}
+  </div>
+</div>

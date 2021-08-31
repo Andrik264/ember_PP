@@ -1,5 +1,20 @@
-  <tr>
-    <th scope="row">{{@user.id}}</th>
-    <td>{{@user.name}}</td>
-    <td>{{@user.email}}</td>
+
+  <tr {{on "click" (fn @selectUser @user.id)}}>
+    <th scope="row">
+      <LinkTo @route="user-page" @model={{@user.id}}>
+        {{@user.id}}
+      </LinkTo>
+    </th>
+
+    <td>
+      <LinkTo @route="user-page" @model={{@user.id}}>
+        {{@user.name}}
+      </LinkTo>
+    </td>
+
+    <td>
+      <LinkTo @route="user-page" @model={{@user.id}}>
+        {{@user.email}}
+      </LinkTo>
+    </td>
   </tr>

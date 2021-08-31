@@ -8,8 +8,8 @@
   </thead>
   <tbody>
     {{#each @users as |user|}}
-      <User @user={{user}} />
-    {{/each}}  
+      <User @user={{user}} @selectUser={{@selectUser}} />
+    {{/each}}
   </tbody>
 </table>
 

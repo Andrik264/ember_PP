@@ -47,7 +47,6 @@ export default class PaginationComponent extends Component {
   }
 
   get pageId() {
-    console.log('button trigger', this.args.pagination);
     return this.args.pagination.page;
   }
 

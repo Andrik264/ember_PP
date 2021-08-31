@@ -1,11 +1,8 @@
-
-
-
 <nav aria-label="Page navigation example">
 
   <ul class="pagination">
     <li class="page-item" {{on "click" (fn @changePage this.previosPage)}}>
-      <a class="page-link" href="#">Previous</a>
+      <span class="page-link">Previous</span>
     </li>
 
     {{#each this.numbersForPagination as |number|}}
@@ -14,16 +11,19 @@
         class="page-item {{if (eq number @pagination.page) 'active' ''}}"
         {{on "click" (fn @changePage number)}}
       >
-        <a class="page-link" href="#">
+        <span class="page-link">
           {{number}}
-        </a>
-      </li> 
+        </span>
+      </li>
 
     {{/each}}
 
 
-    <li class="page-item" {{on "click" (fn @changePage this.nextPageId)}}>
-      <a class="page-link" href="#">Next</a>
+    <li
+      class="page-item"
+      {{on "click" (fn @changePage this.nextPageId)}}
+    >
+      <span class="page-link" href="#">Next</span>
     </li>
   </ul>
 </nav>

@@ -2,10 +2,31 @@
   <div>
     <h2>Users</h2>
 
-    
+    <div class="filters">
+      <Filter::Input
+        @query={{this.name}}
+        placeholder="Search by name"
+      />
+
+      <Filter::Select name="statusFilter" {{on "change" this.onChangeFilter}}>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </Filter::Select>
+
+      <Filter::Select name="genderFilter" {{on "change" this.onChangeFilter}}>
+        <option value="all" selected>All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </Filter::Select>
+
+      <Filter::Input
+        @query={{this.email}}
+        placeholder="Search by email"
+      />
+    </div>
 
     <div>
-      <UsersList @users={{this.model.data}} />
+      <UsersList @users={{this.model.data}} @selectUser={{this.selectUser}} />
     </div>
 
     <Pagination @changePage={{this.changePage}} @pagination={{this.pagination}} />

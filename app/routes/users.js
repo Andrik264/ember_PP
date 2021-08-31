@@ -21,9 +21,8 @@ export default class UsersRoute extends Route {
   };
 
   async model(params) {
-    // debugger
+    console.log(params);
 
-    console.log('model params = ', params);
     const response = await fetch(
       `${config.API_DOMAIN_NAME}/users?page=${params.page}`
     );
