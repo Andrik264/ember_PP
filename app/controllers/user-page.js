@@ -1,29 +1,22 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class UserPageController extends Controller {
-  // user = this.model.user.data;
-  // posts = this.model.posts.data;
+  @service router;
   @tracked selectedTab = 'posts';
-
-  //  && this.transtiionToRoute
 
   @action
   selectTab(tabName) {
-    // this.transitionToRoute('user-page/posts', this.user.id);
+    // this.router.transitionTo(`user-page.${tabName}`, this.user.id);
+
     this.selectedTab = tabName;
   }
 
   get user() {
-    return this.model.user.data;
-  }
+    console.log('user-page model result:', this.model);
 
-  get posts() {
-    return this.model.posts.data;
-  }
-
-  get fullInfo() {
-    return { ...this.user, ...this.posts };
+    return this.model;
   }
 }

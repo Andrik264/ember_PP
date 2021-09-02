@@ -21,13 +21,13 @@ export default class UsersRoute extends Route {
   };
 
   async model(params) {
-    console.log(params);
+    console.log('users model params: ', params);
 
-    const response = await fetch(
-      `${config.API_DOMAIN_NAME}/users?page=${params.page}`
-    );
-    const json = await response.json();
+    const { page } = params;
+    const data = await this.store.query('user', { page });
 
-    return json;
+    console.log('users model adapter result: ', data.toArray());
+
+    return data;
   }
 }

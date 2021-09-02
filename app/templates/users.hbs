@@ -26,9 +26,10 @@
     </div>
 
     <div>
-      <UsersList @users={{this.model.data}} @selectUser={{this.selectUser}} />
+      <UsersList @users={{this.model}} @selectUser={{this.selectUser}} />
     </div>
 
+    {{!-- Does not work till i fix users route model to get data for pagination --}}
     <Pagination @changePage={{this.changePage}} @pagination={{this.pagination}} />
   </div>
 {{outlet}}
