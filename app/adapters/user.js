@@ -1,5 +1,5 @@
-import config from '../config/environment';
 import ApplicationAdapter from './application';
+import config from '../config/environment';
 
 export default class UserAdapter extends ApplicationAdapter {
   async queryRecord(store, type, query) {
@@ -21,14 +21,14 @@ export default class UserAdapter extends ApplicationAdapter {
   }
 
   async query(store, type, query) {
-    console.log('users adapter query:', query);
+    // console.log('users adapter query:', query);
 
     const users = await new Promise((resolver, reject) => {
       fetch(`${config.API_DOMAIN_NAME}/users?page=${query.page}`)
         .then((data) => resolver(data.json()))
         .catch((error) => reject(error));
     });
-    console.log('users adapter -> fetch result: ', users);
+    // console.log('users adapter -> fetch result: ', users);
 
     return users;
   }
