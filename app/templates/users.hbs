@@ -6,15 +6,18 @@
       <Filter::Input
         @query={{this.name}}
         placeholder="Search by name"
+        name="nameFilter"
+        {{on "input" this.onChangeFilter}}
       />
 
       <Filter::Select name="statusFilter" {{on "change" this.onChangeFilter}}>
+        <option value="all">Any status</option>
         <option value="active">Active</option>
         <option value="inactive">Inactive</option>
       </Filter::Select>
 
       <Filter::Select name="genderFilter" {{on "change" this.onChangeFilter}}>
-        <option value="all" selected>All</option>
+        <option value="all" selected>Any gender</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
       </Filter::Select>
@@ -22,6 +25,8 @@
       <Filter::Input
         @query={{this.email}}
         placeholder="Search by email"
+        name="emailFilter"
+        {{on "input" this.onChangeFilter}}
       />
     </div>
 
@@ -29,7 +34,6 @@
       <UsersList @users={{this.model}} @selectUser={{this.selectUser}} />
     </div>
 
-    {{!-- Does not work till i fix users route model to get data for pagination --}}
     <Pagination @changePage={{this.changePage}} @pagination={{this.pagination}} />
   </div>
 {{outlet}}

@@ -3,7 +3,6 @@ import config from 'web-page-by-ember/config/environment';
 
 export default class PostAdapter extends ApplicationAdapter {
   async query(store, type, query) {
-    // console.log(query);
     const { user_id, page } = query;
     const data = await new Promise((resolver, reject) => {
       page

@@ -20,8 +20,12 @@ export default class UsersRoute extends Route {
   };
 
   async model(params) {
-    const { page } = params;
-    const data = await this.store.query('user', { page });
+    const { page, name, email, status, gender } = params;
+
+    const data = await this.store.query('user', {
+      page,
+      queryParams: { name, email, status, gender },
+    });
 
     return data;
   }

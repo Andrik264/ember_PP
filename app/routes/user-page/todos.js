@@ -6,8 +6,6 @@ export default class UserPageTodosRoute extends Route {
 
     const data = await this.store.query('todo', { user_id: parentModel.id });
 
-    console.log(data);
-
     return data;
   }
 }

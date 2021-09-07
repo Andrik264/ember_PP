@@ -6,8 +6,8 @@ export default class UsersController extends Controller {
   queryParams = ['name', 'status', 'gender', 'email', 'page'];
 
   @tracked selectedUserId = null;
-  name = null;
-  email = null;
+  @tracked name = null;
+  @tracked email = null;
   @tracked status = null;
   @tracked gender = null;
 
@@ -33,6 +33,10 @@ export default class UsersController extends Controller {
 
     switch (name) {
       case 'statusFilter':
+        if (value === 'all') {
+          this.status = null;
+          break;
+        }
         this.status = value;
         break;
 
@@ -42,6 +46,22 @@ export default class UsersController extends Controller {
           break;
         }
         this.gender = value;
+        break;
+
+      case 'nameFilter':
+        if (value === '') {
+          this.name = null;
+          break;
+        }
+        this.name = value;
+        break;
+
+      case 'emailFilter':
+        if (value === '') {
+          this.email = null;
+          break;
+        }
+        this.email = value;
         break;
 
       default:

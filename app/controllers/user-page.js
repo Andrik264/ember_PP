@@ -16,8 +16,6 @@ export default class UserPageController extends Controller {
   }
 
   get user() {
-    // console.log('user-page model result:', this.model);
-
     return this.model;
   }
 }
