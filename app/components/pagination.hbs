@@ -5,6 +5,26 @@
       <span class="page-link">Previous</span>
     </li>
 
+    {{#if this.showOrNotStart}}
+      <li
+        class="page-item"
+        {{on "click" (fn @changePage 1)}}
+      >
+        <span class="page-link">
+          1
+        </span>
+      </li>
+
+      <li
+        class="page-item"
+        {{on "click" (fn @changePage 4)}}
+      >
+        <span class="page-link">
+          ...
+        </span>
+      </li>
+    {{/if}}
+
     {{#each this.numbersForPagination as |number|}}
 
       <li
@@ -17,6 +37,28 @@
       </li>
 
     {{/each}}
+
+    {{#if this.showOrNotEnd}}
+      <li
+        class="page-item"
+        {{on "click" (fn @changePage 4)}}
+      >
+        <span class="page-link">
+          ...
+        </span>
+      </li>
+
+      <li
+        class="page-item"
+        {{on "click" (fn @changePage this.lastPageId)}}
+      >
+        <span class="page-link">
+          {{this.lastPageId}}
+        </span>
+      </li>
+    {{/if}}
+
+
 
 
     <li

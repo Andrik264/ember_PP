@@ -7,12 +7,11 @@ export default class PaginationComponent extends Component {
   get numbersForPagination() {
     const { pages } = this.args.pagination;
     const pageId = this.args.pagination.page;
-    // const pageCount = this.args.pagination.pages;
 
     let numbers = [];
     const maxNumbersInPagination = 9;
     const minPageId = 6;
-    const maxPageId = pages - 8; //pages = 20, 1...12,13,14,15,16,17,18,19,20 - maxPageId = 12 (12 + 8 = pages)
+    const maxPageId = pages - 5; //pages = 20, 1...12,13,14,15,16,17,18,19,20 - maxPageId = 12 (12 + 8 = pages)
     const countOfNumbersToEachSide = 4;
 
     switch (true) {
@@ -27,7 +26,11 @@ export default class PaginationComponent extends Component {
         break;
 
       case pageId >= maxPageId:
-        for (let pageNumber = maxPageId; pageNumber <= pages; pageNumber++) {
+        for (
+          let pageNumber = pages - maxNumbersInPagination;
+          pageNumber <= pages;
+          pageNumber++
+        ) {
           numbers.push(pageNumber);
         }
         break;
@@ -56,5 +59,19 @@ export default class PaginationComponent extends Component {
 
   get nextPageId() {
     return this.pageId + 1;
+  }
+
+  get showOrNotEnd() {
+    const boolResult = this.pageId < this.lastPageId - 5;
+
+    return boolResult;
+  }
+
+  get showOrNotStart() {
+    return this.pageId > 6;
+  }
+
+  get lastPageId() {
+    return this.args.pagination.pages;
   }
 }

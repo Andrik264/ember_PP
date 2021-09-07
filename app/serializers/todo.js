@@ -1,6 +1,6 @@
-import JSONSerializer from '@ember-data/serializer/json';
+import JSONAPISerializer from '@ember-data/serializer/json';
 
-export default class PostSerializer extends JSONSerializer {
+export default class TodoSerializer extends JSONAPISerializer {
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
     const data = super.normalizeResponse(
       store,

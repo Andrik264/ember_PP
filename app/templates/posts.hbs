@@ -1,5 +1,11 @@
 {{page-title "Posts"}}
-  <div>
-    Posts page
-  </div>
+<div>
+  <h2>Posts</h2>
+
+  <Pagination @changePage={{fn this.changePage}} @pagination={{this.pagination}} />
+
+
+  <UserPosts @posts={{this.model}} />
+
+</div>
 {{outlet}}

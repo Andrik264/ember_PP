@@ -6,8 +6,6 @@ export default class UserPagePostsRoute extends Route {
 
     const data = await this.store.query('post', { user_id: parentModel.id });
 
-    console.log('Posts || model return', data);
-
     return data;
   }
 }

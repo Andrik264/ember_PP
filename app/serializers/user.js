@@ -10,8 +10,6 @@ export default class UserSerializer extends JSONSerializer {
       requestType
     );
 
-    console.log('user serializer: ', data);
-
     return {
       ...payload,
       ...data,
