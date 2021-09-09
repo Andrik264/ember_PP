@@ -1,11 +1,13 @@
 import RESTAPIAdapter from '@ember-data/adapter/rest';
+import config from 'web-page-by-ember/config/environment';
 import qs from 'query-string';
 
 export default class ApplicationAdapter extends RESTAPIAdapter {
-  createQueryString(searchParametres) {
-    let queryString = qs('query-string');
-    let result = queryString.stringify(searchParametres);
+  headers = {
+    Authorization: `Bearer ${config.ACCESS_TOKEN}`,
+  };
 
-    return result;
+  createQueryString(searchParametres) {
+    return qs.stringify(searchParametres);
   }
 }

@@ -1,5 +1,34 @@
 {{page-title "Posts"}}
-  <p>user posts below</p>
-  {{this.info}}
+
+  <div>
+    <button {{on 'click' this.changeFormStatus}}>
+      {{if this.isFormShowed 'Decline' 'Create new post'}}
+    </button>
+  </div>
+
+  {{#if this.isFormShowed}}
+    <div>
+      <form>
+        <Input
+          type="text"
+          placeholder="Title"
+          @value={{this.newPostTitle}}
+          {{on 'input' this.onInput}}
+        />
+
+        <Textarea
+          type="text"
+          placeholder="Body"
+          @value={{this.newPostBody}}
+          {{on 'input' this.onInput}}
+        />
+
+        <button type="reset" {{on 'click' this.onSubmit}}>
+          Submit
+        </button>
+      </form>
+    </div>
+  {{/if}}
+
   <UserPosts @posts={{this.model}} />
 {{outlet}}

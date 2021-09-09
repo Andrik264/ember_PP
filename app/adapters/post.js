@@ -1,19 +1,25 @@
 import ApplicationAdapter from './application';
 import config from 'web-page-by-ember/config/environment';
 
-export default class PostAdapter extends ApplicationAdapter {
-  async query(store, type, query) {
-    const { user_id, page } = query;
-    const data = await new Promise((resolver, reject) => {
-      page
-        ? fetch(`${config.API_DOMAIN_NAME}/posts?page=${page}`)
-            .then((data) => resolver(data.json()))
-            .catch(reject)
-        : fetch(`${config.API_DOMAIN_NAME}/users/${user_id}/posts`)
-            .then((data) => resolver(data.json()))
-            .catch(reject);
-    });
+const { API_DOMAIN_NAME } = config;
+const allPosts_URL = `${API_DOMAIN_NAME}/posts`;
+const userPosts_URL = (user_id) => `${API_DOMAIN_NAME}/users/${user_id}/posts`;
 
-    return data;
+export default class PostAdapter extends ApplicationAdapter {
+  async createRecord(modelName, inputProperties) {
+    return await this.ajax(`${allPosts_URL}`, 'POST');
+  }
+
+  async query(store, type, query) {
+    const { user_id, queryParams } = query;
+
+    const queryString = this.createQueryString(queryParams);
+
+    return await this.ajax(
+      user_id
+        ? `${userPosts_URL(user_id)}${queryString}`
+        : `${allPosts_URL}?${queryString}`,
+      'GET'
+    );
   }
 }
