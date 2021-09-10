@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
 
 export default class UserPagePostsRoute extends Route {
   async model(params, transition) {
@@ -7,5 +8,10 @@ export default class UserPagePostsRoute extends Route {
     const data = await this.store.query('post', { user_id: parentModel.id });
 
     return data;
+  }
+
+  @action
+  refreshModel() {
+    this.refresh();
   }
 }

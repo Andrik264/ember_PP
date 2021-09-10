@@ -8,6 +8,15 @@ export default class ApplicationAdapter extends RESTAPIAdapter {
   };
 
   createQueryString(searchParametres) {
+    // let editedParametres = {};
+
+    // for (let key in searchParametres) {
+    //   if (searchParametres[key] !== '') {
+    //     editedParametres[key] = searchParametres[key];
+    //   }
+    // }
+
+    // console.log(qs.stringify(editedParametres));
     return qs.stringify(searchParametres);
   }
 }

@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class UserPageRoute extends Route {
@@ -13,5 +14,10 @@ export default class UserPageRoute extends Route {
     const user = await this.store.queryRecord('user', { user_id });
 
     return user;
+  }
+
+  @action
+  refreshModel() {
+    this.refresh();
   }
 }

@@ -1,7 +1,7 @@
 {{page-title "Posts"}}
 
   <div>
-    <button {{on 'click' this.changeFormStatus}}>
+    <button type="button" {{on 'click' this.changeFormStatus}}>
       {{if this.isFormShowed 'Decline' 'Create new post'}}
     </button>
   </div>
@@ -13,14 +13,12 @@
           type="text"
           placeholder="Title"
           @value={{this.newPostTitle}}
-          {{on 'input' this.onInput}}
         />
 
         <Textarea
           type="text"
           placeholder="Body"
           @value={{this.newPostBody}}
-          {{on 'input' this.onInput}}
         />
 
         <button type="reset" {{on 'click' this.onSubmit}}>

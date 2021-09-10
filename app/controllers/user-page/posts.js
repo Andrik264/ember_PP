@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import config from 'web-page-by-ember/config/environment';
 
 export default class UserPagePostsController extends Controller {
   @tracked isFormShowed = false;
@@ -15,9 +14,11 @@ export default class UserPagePostsController extends Controller {
 
   @action
   onSubmit() {
-    console.log(config);
+    console.log(this.model);
+    const { user_id } = this.model.query;
 
     const newPost = this.store.createRecord('post', {
+      user_id,
       title: this.newPostTitle,
       body: this.newPostBody,
     });
@@ -27,5 +28,7 @@ export default class UserPagePostsController extends Controller {
     this.newPostBody = null;
     this.newPostTitle = null;
     this.isFormShowed = false;
+
+    this.send('refreshModel');
   }
 }

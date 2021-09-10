@@ -1,8 +1,16 @@
 {{page-title "Posts"}}
 <div>
   <h2>Posts</h2>
+
+  <Filter::Input
+    placeholder="Search by Title"
+    @query={{this.title}}
+    name="title"
+    {{on "input" this.onChangeFilter}}
+  />
+
   <UserPosts @posts={{this.model}} />
 
-  <Pagination @changePage={{fn this.changePage}} @pagination={{this.pagination}} />
+  <Pagination @changePage={{this.changePage}} @pagination={{this.pagination}} />
 </div>
 {{outlet}}

@@ -31,41 +31,10 @@ export default class UsersController extends Controller {
   onChangeFilter(event) {
     const { name, value } = event.target;
 
-    switch (name) {
-      case 'statusFilter':
-        if (value === 'all') {
-          this.status = null;
-          break;
-        }
-        this.status = value;
-        break;
-
-      case 'genderFilter':
-        if (value === 'all') {
-          this.gender = null;
-          break;
-        }
-        this.gender = value;
-        break;
-
-      case 'nameFilter':
-        if (value === '') {
-          this.name = null;
-          break;
-        }
-        this.name = value;
-        break;
-
-      case 'emailFilter':
-        if (value === '') {
-          this.email = null;
-          break;
-        }
-        this.email = value;
-        break;
-
-      default:
-        break;
+    if (value === 'all' || value === '') {
+      this[name] = null;
+    } else {
+      this[name] = value;
     }
   }
 

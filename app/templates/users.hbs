@@ -6,17 +6,17 @@
       <Filter::Input
         @query={{this.name}}
         placeholder="Search by name"
-        name="nameFilter"
+        name="name"
         {{on "input" this.onChangeFilter}}
       />
 
-      <Filter::Select name="statusFilter" {{on "change" this.onChangeFilter}}>
+      <Filter::Select name="status" {{on "change" this.onChangeFilter}}>
         <option value="all">Any status</option>
         <option value="active">Active</option>
         <option value="inactive">Inactive</option>
       </Filter::Select>
 
-      <Filter::Select name="genderFilter" {{on "change" this.onChangeFilter}}>
+      <Filter::Select name="gender" {{on "change" this.onChangeFilter}}>
         <option value="all" selected>Any gender</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
@@ -25,7 +25,7 @@
       <Filter::Input
         @query={{this.email}}
         placeholder="Search by email"
-        name="emailFilter"
+        name="email"
         {{on "input" this.onChangeFilter}}
       />
     </div>
