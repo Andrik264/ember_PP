@@ -13,22 +13,33 @@ export default class UserPagePostsController extends Controller {
   @tracked newPostBody = null;
 
   @action
-  onSubmit() {
-    console.log(this.model);
+  async onSubmit() {
     const { user_id } = this.model.query;
 
-    const newPost = this.store.createRecord('post', {
+    const newPost = await this.store.createRecord('post', {
       user_id,
       title: this.newPostTitle,
       body: this.newPostBody,
     });
 
-    newPost.save();
+    await newPost.save();
+
+    this.send('refreshModel');
 
     this.newPostBody = null;
     this.newPostTitle = null;
     this.isFormShowed = false;
+  }
 
-    this.send('refreshModel');
+  @action
+  async deletePost(post_id) {
+    try {
+      await this.store.find('post', post_id).then((post) => {
+        post.deleteRecord();
+        post.save();
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }

@@ -29,4 +29,17 @@ export default class PostsController extends Controller {
   get pagination() {
     return this.model.meta.pagination;
   }
+
+  @action
+  async deletePost(post_id) {
+    try {
+      await this.store
+        .findRecord('post', post_id, { reload: true })
+        .then((post) => {
+          post.destroyRecord();
+        });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

@@ -28,5 +28,5 @@
     </div>
   {{/if}}
 
-  <UserPosts @posts={{this.model}} />
+  <UserPosts @deletePost={{fn this.deletePost}} @posts={{this.model}} />
 {{outlet}}

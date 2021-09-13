@@ -7,7 +7,9 @@ const getPost = (post_id) => `${allPosts_URL}/${post_id}`;
 const userPosts_URL = (user_id) => `${API_DOMAIN_NAME}/users/${user_id}/posts`;
 
 export default class PostAdapter extends ApplicationAdapter {
-  async deleteRecord(store, type, snapshot) {
+  host = API_DOMAIN_NAME;
+
+  async destroyRecord(store, type, snapshot) {
     const { id } = snapshot;
 
     return await this.ajax(`${getPost(id)}`, 'DELETE');

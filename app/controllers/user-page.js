@@ -23,8 +23,6 @@ export default class UserPageController extends Controller {
   onChange(event) {
     const { name, value } = event.target;
 
-    console.log(name, value);
-
     this[name] = value;
   }
 

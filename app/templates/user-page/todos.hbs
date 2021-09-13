@@ -6,19 +6,39 @@
                 <div class="card px-3">
                     <div class="card-body">
                         <h4 class="card-title">Todo list</h4>
-                        <div class="add-items d-flex"> <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> <button class="add btn btn-primary font-weight-bold todo-list-add-btn" type="button">Add</button> </div>
+
+                        <div class="add-items d-flex">
+                          <Input
+                            type="text"
+                            class="form-control todo-list-input"
+                            placeholder="What do you need to do today?"
+                            @value={{this.title}}
+                          />
+
+                          <button
+                            class="add btn btn-primary font-weight-bold todo-list-add-btn"
+                            type="button"
+                            {{on "click" this.createTodo}}
+                          >
+                            Add
+                          </button>
+                        </div>
+                        
                         <div class="list-wrapper">
                             <ul class="d-flex flex-column-reverse todo-list">
                               {{#each this.model as |todo|}}
-                                <li {{!-- class="completed" --}}>
+                                <li class={{if todo.status 'completed'}}>
                                     <div class="form-check">
                                       <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox">
+                                        <input class="checkbox"
+                                          type="checkbox"
+                                          {{on "click" (fn this.changeTodoStatus todo.id)}}
+                                        >
                                         {{todo.title}}
                                         <i class="input-helper"></i>
                                       </label>
                                     </div>
-                                    <i class="remove mdi mdi-close-circle-outline"></i>
+                                    {{!-- <i class="remove mdi mdi-close-circle-outline"></i> --}}
                                 </li>
                               {{/each}}
                             </ul>

@@ -9,8 +9,8 @@
     {{on "input" this.onChangeFilter}}
   />
 
-  <UserPosts @posts={{this.model}} />
+  <UserPosts @deletePost={{fn this.deletePost}} @posts={{this.model}} />
 
-  <Pagination @changePage={{this.changePage}} @pagination={{this.pagination}} />
+  <Pagination @changePage={{fn this.changePage}} @pagination={{this.pagination}} />
 </div>
 {{outlet}}

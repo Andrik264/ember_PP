@@ -13,7 +13,6 @@ export default class PostsRoute extends Route {
   async model(params) {
     const { page, title } = params;
 
-    console.log(params);
     const data = await this.store.query('post', {
       queryParams: { page, title },
     });
